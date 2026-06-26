@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mallorca.puntoreforma.es/sitemap.xml
