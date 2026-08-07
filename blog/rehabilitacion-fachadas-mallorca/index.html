@@ -33,6 +33,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "Punto Reforma Mallorca",
+    "alternateName": "Puntoreforma",
     "logo": { "@type": "ImageObject", "url": "https://mallorca.puntoreforma.es/apple-touch-icon.png" }
   },
   "mainEntityOfPage": "https://mallorca.puntoreforma.es/blog/rehabilitacion-fachadas-mallorca/",
@@ -557,6 +558,23 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2. Denied until the banner says otherwise, then updated in place.
+  (function(){
+    var granted = false;
+    try {
+      var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
+      if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
+    } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: granted ? 'granted' : 'denied',
+      analytics_storage: granted ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  })();
   gtag('js', new Date());
   gtag('config', 'G-LYFBQQD4WK');
 </script>
@@ -651,7 +669,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
       <a class="article-back mono" href="../" data-en="Back to blog">Volver al blog</a>
       <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span data-en="Guide · Mallorca">Guía · Mallorca</span></span>
       <h1 data-en="Façade, roof and terrace rehabilitation in Mallorca: a community guide to IEE, waterproofing and planning">Rehabilitación de fachadas, tejados y terrazas en Mallorca: guía para comunidades sobre IEE, impermeabilización y planificación</h1>
-      <p data-en="This guide is aimed above all at owners&#x27; communities and property administrators in Mallorca, not only private owners. The building envelope —façade, roof and terraces— affects safety, maintenance cost, damp prevention, aesthetics and the value of the property. Here we explain the landscape in Palma and Mallorca, what the IEE is, the sequence of a community-led project and how to prioritise works when the budget is limited.">Esta guía está pensada sobre todo para comunidades de propietarios y administradores de fincas en Mallorca, no solo para particulares. La envolvente del edificio —fachada, tejado y terrazas— afecta a la seguridad, al coste de mantenimiento, a la prevención de humedades, a la estética y al valor del inmueble. Aquí explicamos el panorama en Palma y Mallorca, qué es el IEE, la secuencia de un proyecto liderado por la comunidad y cómo priorizar los trabajos cuando el presupuesto es limitado.</p>
+      <p data-en="This guide is aimed above all at owners&#x27; communities and property administrators in Mallorca, not only private owners. The building envelope (façade, roof and terraces) affects safety, maintenance cost, damp prevention, aesthetics and the value of the property. Here we explain the landscape in Palma and Mallorca, what the IEE is, the sequence of a community-led project and how to prioritise works when the budget is limited.">Esta guía está pensada sobre todo para comunidades de propietarios y administradores de fincas en Mallorca, no solo para particulares. La envolvente del edificio (fachada, tejado y terrazas) afecta a la seguridad, al coste de mantenimiento, a la prevención de humedades, a la estética y al valor del inmueble. Aquí explicamos el panorama en Palma y Mallorca, qué es el IEE, la secuencia de un proyecto liderado por la comunidad y cómo priorizar los trabajos cuando el presupuesto es limitado.</p>
       <figure>
         <img src="../../images/projekt/villa-boa.webp" alt="Rehabilitación de fachada en Mallorca para una comunidad de propietarios" fetchpriority="high">
         <figcaption data-en="Example image from the Puntoreforma project archive.">Imagen de ejemplo del archivo de proyectos de Puntoreforma.</figcaption>
@@ -665,7 +683,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
       <h2 data-en="What the IEE is and why it affects your community">Qué es el IEE y por qué afecta a tu comunidad</h2>
       <p data-en="The IEE (Building Evaluation Report) assesses the conservation status, accessibility conditions and energy efficiency of the property. It replaced the old ITE and is usually mandatory for buildings above a certain age. Exterior rehabilitation often intersects with these building-maintenance obligations, so it is best for the community to know its IEE situation before planning the façade, roof or terraces.">El IEE (Informe de Evaluación del Edificio) evalúa el estado de conservación, las condiciones de accesibilidad y la eficiencia energética del inmueble. Sustituyó a la antigua ITE y suele ser obligatorio para edificios a partir de cierta antigüedad. La rehabilitación exterior se cruza a menudo con estas obligaciones de mantenimiento del edificio, por lo que conviene que la comunidad conozca su situación respecto al IEE antes de planificar fachada, tejado o terrazas.</p>
       <h2 data-en="The sequence of a community-led project">La secuencia de un proyecto liderado por la comunidad</h2>
-      <p data-en="A well-managed envelope project follows an order that avoids surprises: inspection and diagnosis of the real condition; scope definition; technical report when necessary; budget and assembly approval; permit procedure depending on the municipality; works planning; communication to residents; and execution with technical supervision. Skipping phases —especially the diagnosis and the assembly agreements— is the most frequent cause of delays and conflicts.">Un proyecto de envolvente bien llevado sigue un orden que evita sorpresas: inspección y diagnóstico del estado real; definición del alcance; informe técnico cuando es necesario; presupuesto y aprobación en junta; trámite de permisos según el municipio; planificación de los trabajos; comunicación a los residentes; y ejecución con dirección técnica. Saltarse fases —sobre todo el diagnóstico y los acuerdos de junta— es la causa más frecuente de retrasos y conflictos.</p>
+      <p data-en="A well-managed envelope project follows an order that avoids surprises: inspection and diagnosis of the real condition; scope definition; technical report when necessary; budget and assembly approval; permit procedure depending on the municipality; works planning; communication to residents; and execution with technical supervision. Skipping phases, especially the diagnosis and the assembly agreements, is the most frequent cause of delays and conflicts.">Un proyecto de envolvente bien llevado sigue un orden que evita sorpresas: inspección y diagnóstico del estado real; definición del alcance; informe técnico cuando es necesario; presupuesto y aprobación en junta; trámite de permisos según el municipio; planificación de los trabajos; comunicación a los residentes; y ejecución con dirección técnica. Saltarse fases, sobre todo el diagnóstico y los acuerdos de junta, es la causa más frecuente de retrasos y conflictos.</p>
       <h2 data-en="Terrace waterproofing, façade cracks and roofs">Impermeabilización de terrazas, grietas de fachada y tejados</h2>
       <p data-en="Each element has its typical intervention. Terraces, which are usually the origin of many leaks, are solved by redoing the waterproofing with suitable membranes and good slopes. Façades require sealing cracks, repairing coatings and sometimes waterproofing the wall. Roofs, recovering watertightness and replacing damaged pieces. The key question for the community is usually whether painting and spot repairs are enough or whether a complete rehabilitation is advisable.">Cada elemento tiene su intervención típica. Las terrazas, que suelen ser el origen de muchas filtraciones, se resuelven rehaciendo la impermeabilización con membranas adecuadas y buenas pendientes. Las fachadas requieren sellar grietas, reparar revestimientos y, a veces, impermeabilizar el paramento. Los tejados, recuperar la estanqueidad y sustituir piezas dañadas. La pregunta clave para la comunidad suele ser si basta con pintar y reparar puntualmente o si conviene una rehabilitación completa.</p>
       <h2 data-en="How to prioritise when the budget is limited">Cómo priorizar cuando el presupuesto es limitado</h2>
@@ -782,10 +800,11 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
     });
     langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     try { localStorage.setItem(LS_LANG, lang); } catch (e) {}
+    try { document.cookie = LS_LANG + '=' + lang + '; Max-Age=31536000; Path=/; Domain=.puntoreforma.es; SameSite=Lax'; } catch (e) {}
   }
   langButtons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
   var saved = 'es';
-  try { saved = localStorage.getItem(LS_LANG) || 'es'; } catch (e) {}
+  try { saved = localStorage.getItem(LS_LANG) || (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || 'es'; } catch (e) {}
   setLang(saved);
 
   /* ---------- marquee seamless loop ---------- */
@@ -1068,7 +1087,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
   function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
   function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
-  function saveConsent(choice){var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
+  function saveConsent(choice){/* tell Google in the same page view, not on the next load */try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});}}catch(e){}var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
   function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
   function initBanner(){
     if(readConsent())return;
@@ -1083,5 +1102,6 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 })();
 </script>
 <!-- END PUNTOREFORMA MINIMAL COOKIE BANNER -->
+  <script src="../../assets/form-context.js"></script>
 </body>
 </html>

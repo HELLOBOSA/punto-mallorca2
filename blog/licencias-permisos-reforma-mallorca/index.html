@@ -33,6 +33,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "Punto Reforma Mallorca",
+    "alternateName": "Puntoreforma",
     "logo": { "@type": "ImageObject", "url": "https://mallorca.puntoreforma.es/apple-touch-icon.png" }
   },
   "mainEntityOfPage": "https://mallorca.puntoreforma.es/blog/licencias-permisos-reforma-mallorca/",
@@ -557,6 +558,23 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2. Denied until the banner says otherwise, then updated in place.
+  (function(){
+    var granted = false;
+    try {
+      var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
+      if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
+    } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: granted ? 'granted' : 'denied',
+      analytics_storage: granted ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  })();
   gtag('js', new Date());
   gtag('config', 'G-LYFBQQD4WK');
 </script>
@@ -661,7 +679,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
       <h2 data-en="Prior communication and urban licence: the key distinction">Comunicación previa y licencia urbanística: la distinción clave</h2>
       <p data-en="In Palma, the official framework distinguishes between prior communication, for smaller works that do not affect the structure, significant layout or protected elements, and the urban-planning licence, needed when there is structural intervention, change of use, extension or impact on listed buildings. The most common mistake is to assume that every renovation follows the same route. Checking it before starting avoids stoppages and penalties.">En Palma, el marco oficial distingue entre la comunicación previa, para obras de menor entidad que no afectan a estructura, distribución relevante ni elementos protegidos, y la licencia urbanística, necesaria cuando hay intervención estructural, cambio de uso, ampliación o afección a edificios catalogados. El error más común es suponer que toda reforma sigue la misma vía. Comprobarlo antes de empezar evita parones y sanciones.</p>
       <h2 data-en="Cosmetic interior works and kitchen or bathroom works">Obras interiores cosméticas y de cocina o baño</h2>
-      <p data-en="Interior renovations that do not change the structural layout or affect common elements —renewing a kitchen or bathroom keeping the position, tiling, painting, changing floors or replacing sanitaryware— are usually processed by the simplest route. Even so, it is worth confirming the specific procedure, because moving water or drainage points that connect to common drainpipes can have added implications.">Las reformas interiores que no cambian la distribución estructural ni afectan a elementos comunes —renovar una cocina o un baño manteniendo la posición, alicatar, pintar, cambiar suelos o sustituir sanitarios— suelen tramitarse por la vía más sencilla. Aun así, conviene confirmar el trámite concreto, porque mover puntos de agua o desagüe que conecten con bajantes comunes puede tener implicaciones añadidas.</p>
+      <p data-en="Interior renovations that do not change the structural layout or affect common elements (renewing a kitchen or bathroom keeping the position, tiling, painting, changing floors or replacing sanitaryware) are usually processed by the simplest route. Even so, it is worth confirming the specific procedure, because moving water or drainage points that connect to common drainpipes can have added implications.">Las reformas interiores que no cambian la distribución estructural ni afectan a elementos comunes (renovar una cocina o un baño manteniendo la posición, alicatar, pintar, cambiar suelos o sustituir sanitarios) suelen tramitarse por la vía más sencilla. Aun así, conviene confirmar el trámite concreto, porque mover puntos de agua o desagüe que conecten con bajantes comunes puede tener implicaciones añadidas.</p>
       <h2 data-en="Air conditioning, windows and terraces">Aire acondicionado, ventanas y terrazas</h2>
       <p data-en="Installing air conditioning, replacing windows or working on a terrace may require additional checks, especially when it affects the exterior appearance of the building. Changing carpentry while respecting the façade look is usually straightforward, but modifying openings, installing visible outdoor units or waterproofing and redoing a terrace that is a common element may need the community&#x27;s authorisation or a specific procedure.">Instalar aire acondicionado, sustituir ventanas o intervenir en una terraza puede requerir comprobaciones adicionales, sobre todo cuando afecta a la imagen exterior del edificio. Cambiar la carpintería respetando el aspecto de fachada suele ser sencillo, pero modificar huecos, instalar unidades exteriores visibles o impermeabilizar y rehacer una terraza que es elemento común puede necesitar autorización de la comunidad o un trámite específico.</p>
       <h2 data-en="Structural works and protected buildings">Obras estructurales y edificios protegidos</h2>
@@ -789,10 +807,11 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
     });
     langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     try { localStorage.setItem(LS_LANG, lang); } catch (e) {}
+    try { document.cookie = LS_LANG + '=' + lang + '; Max-Age=31536000; Path=/; Domain=.puntoreforma.es; SameSite=Lax'; } catch (e) {}
   }
   langButtons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
   var saved = 'es';
-  try { saved = localStorage.getItem(LS_LANG) || 'es'; } catch (e) {}
+  try { saved = localStorage.getItem(LS_LANG) || (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || 'es'; } catch (e) {}
   setLang(saved);
 
   /* ---------- marquee seamless loop ---------- */
@@ -1075,7 +1094,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
   function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
   function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
-  function saveConsent(choice){var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
+  function saveConsent(choice){/* tell Google in the same page view, not on the next load */try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});}}catch(e){}var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
   function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
   function initBanner(){
     if(readConsent())return;
@@ -1090,5 +1109,6 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 })();
 </script>
 <!-- END PUNTOREFORMA MINIMAL COOKIE BANNER -->
+  <script src="../../assets/form-context.js"></script>
 </body>
 </html>

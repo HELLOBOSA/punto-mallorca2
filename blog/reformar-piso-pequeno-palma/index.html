@@ -33,6 +33,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "Punto Reforma Mallorca",
+    "alternateName": "Puntoreforma",
     "logo": { "@type": "ImageObject", "url": "https://mallorca.puntoreforma.es/apple-touch-icon.png" }
   },
   "mainEntityOfPage": "https://mallorca.puntoreforma.es/blog/reformar-piso-pequeno-palma/",
@@ -557,6 +558,23 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2. Denied until the banner says otherwise, then updated in place.
+  (function(){
+    var granted = false;
+    try {
+      var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
+      if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
+    } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: granted ? 'granted' : 'denied',
+      analytics_storage: granted ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  })();
   gtag('js', new Date());
   gtag('config', 'G-LYFBQQD4WK');
 </script>
@@ -665,7 +683,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
       <h2 data-en="Sliding doors, vertical storage and bespoke furniture">Puertas correderas, almacenaje vertical y muebles a medida</h2>
       <p data-en="In small spaces, sliding doors save the swing of hinged ones, and vertical storage uses the full height that old Palma flats usually have. Bespoke furniture is the best investment in a small flat: cabinets up to the ceiling, under-window solutions, beds with storage and carpentry that uses impossible corners multiply capacity without taking away passage metres. Generic wastes space; made-to-measure gains it.">En espacios reducidos, las puertas correderas ahorran el barrido de las abatibles, y el almacenaje vertical aprovecha la altura completa que suelen tener los pisos antiguos de Palma. El mueble a medida es la mejor inversión en un piso pequeño: armarios hasta el techo, soluciones bajo ventana, camas con almacenaje y carpintería que aprovecha rincones imposibles multiplican la capacidad sin restar metros de paso. Lo genérico desperdicia espacio; lo medido lo gana.</p>
       <h2 data-en="Natural light and integrating kitchen and living room">Luz natural e integración de cocina y salón</h2>
-      <p data-en="Light makes a small flat seem larger. Opening the kitchen onto the living room —when the partition is not load-bearing— gains light and openness and creates a more versatile day zone. Replacing partitions with glazed elements, choosing light, reflective colours and reinforcing artificial lighting on three levels helps the space breathe. In Palma, making good use of the Mediterranean light is one of the best assets of a compact apartment.">La luz hace que un piso pequeño parezca mayor. Abrir la cocina al salón —cuando el tabique no es de carga— gana luz y amplitud y crea una zona de día más versátil. Sustituir tabiques por elementos acristalados, elegir colores claros y reflectantes y reforzar la iluminación artificial en tres niveles ayuda a que el espacio respire. En Palma, aprovechar bien la luz mediterránea es una de las mejores bazas de un apartamento compacto.</p>
+      <p data-en="Light makes a small flat seem larger. Opening the kitchen onto the living room, when the partition is not load-bearing, gains light and openness and creates a more versatile day zone. Replacing partitions with glazed elements, choosing light, reflective colours and reinforcing artificial lighting on three levels helps the space breathe. In Palma, making good use of the Mediterranean light is one of the best assets of a compact apartment.">La luz hace que un piso pequeño parezca mayor. Abrir la cocina al salón, cuando el tabique no es de carga, gana luz y amplitud y crea una zona de día más versátil. Sustituir tabiques por elementos acristalados, elegir colores claros y reflectantes y reforzar la iluminación artificial en tres niveles ayuda a que el espacio respire. En Palma, aprovechar bien la luz mediterránea es una de las mejores bazas de un apartamento compacto.</p>
       <h2 data-en="Three cases: first home, second home and rental">Tres casos: primera vivienda, segunda residencia y alquiler</h2>
       <p data-en="The renovation of a small flat changes according to its use. In a first home, daily comfort, storage and good use of every metre prevail. In a seasonal second home, durability and easy maintenance between stays matter. In a rental-oriented flat, the resistance of materials and finishes weighs more than a boutique finish. Defining the use before designing avoids overspending where it adds no value.">La reforma de un piso pequeño cambia según su uso. En una primera vivienda prima el confort diario, el almacenaje y un buen aprovechamiento de cada metro. En una segunda residencia de uso estacional, importan la durabilidad y el mantenimiento fácil entre estancias. En un piso orientado al alquiler, la resistencia de materiales y acabados pesa más que un acabado boutique. Definir el uso antes de proyectar evita gastar de más donde no aporta valor.</p>
       <h2 data-en="Smart budget: where to spend and where not to">Presupuesto inteligente: dónde sí y dónde no gastar</h2>
@@ -782,10 +800,11 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
     });
     langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     try { localStorage.setItem(LS_LANG, lang); } catch (e) {}
+    try { document.cookie = LS_LANG + '=' + lang + '; Max-Age=31536000; Path=/; Domain=.puntoreforma.es; SameSite=Lax'; } catch (e) {}
   }
   langButtons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
   var saved = 'es';
-  try { saved = localStorage.getItem(LS_LANG) || 'es'; } catch (e) {}
+  try { saved = localStorage.getItem(LS_LANG) || (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || 'es'; } catch (e) {}
   setLang(saved);
 
   /* ---------- marquee seamless loop ---------- */
@@ -1068,7 +1087,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
   function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
   function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
-  function saveConsent(choice){var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
+  function saveConsent(choice){/* tell Google in the same page view, not on the next load */try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});}}catch(e){}var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
   function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
   function initBanner(){
     if(readConsent())return;
@@ -1083,5 +1102,6 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 })();
 </script>
 <!-- END PUNTOREFORMA MINIMAL COOKIE BANNER -->
+  <script src="../../assets/form-context.js"></script>
 </body>
 </html>
